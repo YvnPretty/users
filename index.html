@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Campus Milpalta (Demo)</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <h2>Campus Login</h2>
+            <div id="error-msg" class="alert alert-danger" style="display: none;">Invalid username or password.</div>
+            
+            <!-- Form simulates login via JS -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" name="username" placeholder="admin" required>
+                </div>    
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" placeholder="admin123" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn" value="Login">
+                </div>
+            </form>
+            <p style="text-align: center; font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">
+                (Demo Mode: Use <b>admin</b> / <b>admin123</b>)
+            </p>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Simple client-side check for the demo
+            if (user === 'admin' && pass === 'admin123') {
+                window.location.href = 'dashboard.html';
+            } else {
+                const error = document.getElementById('error-msg');
+                error.style.display = 'block';
+                error.textContent = 'Invalid username or password (Try: admin / admin123)';
+            }
+        }
+    </script>
+</body>
+</html>
